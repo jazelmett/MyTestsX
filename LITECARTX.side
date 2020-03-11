@@ -1,0 +1,226 @@
+{
+  "id": "a6fa2e16-2e77-45f7-818b-03cb6a9e7b31",
+  "version": "2.0",
+  "name": "LITECART X",
+  "url": "http://litecart.stqa.ru",
+  "tests": [{
+    "id": "33c5eb55-2466-4619-95d1-96be8dd50bfa",
+    "name": "Cart",
+    "commands": [{
+      "id": "757683f9-353a-407f-b8ff-d05ec359b356",
+      "comment": "",
+      "command": "open",
+      "target": "/en/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3fa6e641-5030-42e6-9a22-1fde6042564e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9f86c0db-9621-4b35-b0a9-a5e474e00a63",
+      "comment": "",
+      "command": "click",
+      "target": "css=#box-most-popular .product .image",
+      "targets": [
+        ["css=#box-most-popular .product:nth-child(2) > .link", "css:finder"],
+        ["xpath=//div[@id='box-most-popular']/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://litecart.stqa.ru/en/rubber-ducks-c-1/green-duck-p-2'])[2]", "xpath:href"],
+        ["xpath=//div[3]/div/ul/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "97a48807-89c2-4659-ab95-620684201bfd",
+      "comment": "",
+      "command": "storeXpathCount",
+      "target": "xpath=//select[@name='options[Size]']",
+      "targets": [],
+      "value": "dropdowns"
+    }, {
+      "id": "20da2ae5-b049-46f7-87fc-4125747c05cb",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return Math.floor(Math.random() * 10) + 1",
+      "targets": [],
+      "value": "quantity"
+    }, {
+      "id": "ab00da13-f0c2-4eef-942f-4b2c84989874",
+      "comment": "",
+      "command": "if",
+      "target": "${dropdowns} > 0",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "406ed76c-747e-4864-81d2-c8013c4ec3a6",
+      "comment": "",
+      "command": "select",
+      "target": "name=options[Size]",
+      "targets": [
+        ["name=options[Size]", "name"],
+        ["css=select", "css:finder"],
+        ["xpath=//select[@name='options[Size]']", "xpath:attributes"],
+        ["xpath=//div[@id='box-product']/div[2]/div[2]/div[5]/form/table/tbody/tr/td/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=Small"
+    }, {
+      "id": "ec48fc5a-5f56-442c-967e-f505b19bfcff",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantity",
+      "targets": [],
+      "value": "${quantity}"
+    }, {
+      "id": "a2648787-0552-4e7b-a822-a4446b0b49a9",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "96ab84a5-53f3-45ca-97ae-903c358680db",
+      "comment": "",
+      "command": "storeXpathCount",
+      "target": "xpath=//div[@id='box-product']//strong[@class='campaign-price']",
+      "targets": [],
+      "value": "actions"
+    }, {
+      "id": "0ead6edd-53b7-4f99-8c73-f7b26eee39d3",
+      "comment": "",
+      "command": "if",
+      "target": "${actions} > 0",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e6f702ca-f2e5-4a12-9d9a-98e08eed2422",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.campaign-price",
+      "targets": [
+        ["css=.campaign-price", "css:finder"],
+        ["xpath=//div[@id='box-product']/div[2]/div[2]/div[2]/strong", "xpath:idRelative"],
+        ["xpath=//div[2]/strong", "xpath:position"],
+        ["xpath=//strong[contains(.,'$18')]", "xpath:innerText"]
+      ],
+      "value": "price"
+    }, {
+      "id": "5c2dbbac-7977-44f8-b0a9-06fee6606492",
+      "comment": "",
+      "command": "else",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fbe129d3-9ffc-4b3c-858e-c152ed4619f4",
+      "comment": "",
+      "command": "storeText",
+      "target": "//*[@id=\"box-product\"]//div[@class='price-wrapper']//span[@class='price']",
+      "targets": [],
+      "value": "price"
+    }, {
+      "id": "27452870-3427-4012-8b19-40668535526f",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "52a03c7e-bf64-446b-bf49-16c1d1105800",
+      "comment": "",
+      "command": "click",
+      "target": "name=add_cart_product",
+      "targets": [
+        ["name=add_cart_product", "name"],
+        ["css=button:nth-child(4)", "css:finder"],
+        ["xpath=//button[@name='add_cart_product']", "xpath:attributes"],
+        ["xpath=//div[@id='box-product']/div[2]/div[2]/div[5]/form/table/tbody/tr/td/button", "xpath:idRelative"],
+        ["xpath=//td/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Add To Cart')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fce9fd24-fa48-499c-9928-4b95500f5971",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "xpath=//div[@id='cart']//span[@class='quantity'][.='${quantity}']",
+      "targets": [],
+      "value": "10000"
+    }, {
+      "id": "5af11842-d7f5-40d1-afbe-be763eef83aa",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return ${quantity}*${price}.substring(1)",
+      "targets": [],
+      "value": "total"
+    }, {
+      "id": "19c19f38-d933-438d-985e-5e0abf0ce739",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=a.content",
+      "targets": [],
+      "value": "Cart:\\n${quantity} item(s) - $${total}"
+    }, {
+      "id": "ca745e8b-d85e-47f0-b8c8-ef3db62d913b",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(1) > img",
+      "targets": [
+        ["css=a:nth-child(1) > img", "css:finder"],
+        ["xpath=//img[@alt='My store']", "xpath:img"],
+        ["xpath=//div[@id='logotype-wrapper']/a/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "be76531d-b5d7-46e7-88f4-6dea59afa76f",
+      "comment": "",
+      "command": "click",
+      "target": "css=#cart > .content",
+      "targets": [
+        ["css=#cart > .content", "css:finder"],
+        ["xpath=//div[@id='cart']/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://litecart.stqa.ru/ru/checkout'])[2]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1ccf23e2-fd5d-427f-8d7a-0d76455e5e16",
+      "comment": "",
+      "command": "click",
+      "target": "name=remove_cart_item",
+      "targets": [
+        ["name=remove_cart_item", "name"],
+        ["css=p:nth-child(4) > button", "css:finder"],
+        ["xpath=//button[@name='remove_cart_item']", "xpath:attributes"],
+        ["xpath=//div[@id='box-checkout-cart']/div/ul/li/form/div/p[4]/button", "xpath:idRelative"],
+        ["xpath=//p[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Remove')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a81a52b-05ed-4304-ac6d-199476f2fe76",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa",
+      "targets": [
+        ["css=.fa", "css:finder"],
+        ["xpath=//nav[@id='site-menu']/ul/li/a/i", "xpath:idRelative"],
+        ["xpath=//i", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "5049e9e3-67e2-42a2-9784-379bd6765edc",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["33c5eb55-2466-4619-95d1-96be8dd50bfa"]
+  }],
+  "urls": ["http://litecart.stqa.ru/"],
+  "plugins": []
+}
